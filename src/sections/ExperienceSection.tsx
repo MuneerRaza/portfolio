@@ -50,8 +50,8 @@ export default function ExperienceSection() {
       ref={sectionRef}
       className="portfolio-section bg-[#121212] relative"
     >
-      <div className="flex h-full px-20 pt-24 pb-16">
-        <div className="max-w-6xl w-full mx-auto flex flex-col">
+      <div className="flex h-full px-20 py-16">
+        <div className="max-w-7xl w-full mx-auto flex flex-col justify-center">
 
           {/* Top: section title + progress */}
           <div className="exp-el flex items-center gap-4 mb-2">
@@ -120,9 +120,9 @@ export default function ExperienceSection() {
               <p className="text-[10px] text-white/15 mt-4 uppercase tracking-[0.2em]">Scroll to navigate</p>
             </div>
 
-            {/* Right: experience card — no remount, content swaps smoothly */}
+            {/* Right: experience card — fixed min-height prevents layout shift */}
             <div className="col-span-9">
-              <div className="border border-white/5 bg-[#1a1a1a] rounded-sm p-8 relative">
+              <div key={activeIndex} className="border border-white/5 bg-[#1a1a1a] rounded-sm p-8 relative min-h-[320px]" style={{ animation: "contentSwap 0.5s cubic-bezier(0.22, 1, 0.36, 1)" }}>
                 {/* Period badge */}
                 <div className="absolute top-6 right-6">
                   <span className="text-xs font-mono text-[#fe9004]/40 border border-[#fe9004]/15 px-3 py-1 rounded-full">

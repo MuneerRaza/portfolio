@@ -38,13 +38,13 @@ export default function AchievementsSection() {
 
   const closeLightbox = () => setLightbox((l) => ({ ...l, open: false }));
 
+  const currentImages = ACHIEVEMENTS[lightbox.index]?.images || [];
+
   const prevImg = () =>
-    setLightbox((l) => ({ ...l, imgIndex: Math.max(0, l.imgIndex - 1) }));
+    setLightbox((l) => ({ ...l, imgIndex: (l.imgIndex - 1 + currentImages.length) % currentImages.length }));
 
   const nextImg = () =>
-    setLightbox((l) => ({ ...l, imgIndex: Math.min(0, l.imgIndex + 1) }));
-
-  const currentAchievement = ACHIEVEMENTS[lightbox.index];
+    setLightbox((l) => ({ ...l, imgIndex: (l.imgIndex + 1) % currentImages.length }));
 
   return (
     <section
@@ -53,8 +53,8 @@ export default function AchievementsSection() {
       className="portfolio-section bg-[#121212] relative overflow-hidden"
       style={{ zIndex: 7 }}
     >
-      <div className="flex flex-col h-full px-20 py-16">
-        <div className="max-w-6xl w-full mx-auto space-y-10">
+      <div className="flex items-center h-full px-20 py-16">
+        <div className="max-w-7xl w-full mx-auto space-y-10">
           <div className="ach-animate flex items-baseline gap-4">
             <span className="section-number">07</span>
             <h2 className="text-4xl font-bold text-white tracking-tight">Achievements</h2>
@@ -65,12 +65,12 @@ export default function AchievementsSection() {
             {ACHIEVEMENTS.map((ach, i) => (
               <button
                 key={i}
-                className="ach-animate card-glow border border-white/5 bg-[#1a1a1a] rounded-sm overflow-hidden text-left group"
+                className="ach-animate card-glow border border-white/5 bg-[#1a1a1a] rounded-sm overflow-hidden text-left group cursor-pointer"
                 onClick={() => openLightbox(i)}
               >
                 <div className="relative overflow-hidden h-36">
                   <img
-                    src={ach.image}
+                    src={ach.images[0]}
                     alt={ach.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -78,6 +78,11 @@ export default function AchievementsSection() {
                     className="absolute inset-0"
                     style={{ background: "linear-gradient(to top, rgba(18,18,18,0.9), transparent 60%)" }}
                   />
+                  {ach.images.length > 1 && (
+                    <span className="absolute top-2 right-2 text-[9px] bg-black/60 border border-white/10 text-white/50 px-1.5 py-0.5 rounded">
+                      {ach.images.length}
+                    </span>
+                  )}
                 </div>
                 <div className="p-4">
                   <div className="text-xs text-[#fe9004] font-semibold tracking-wide">{ach.result}</div>
@@ -89,14 +94,14 @@ export default function AchievementsSection() {
         </div>
       </div>
 
-      {lightbox.open && currentAchievement && (
+      {lightbox.open && (
         <Lightbox
-          images={[currentAchievement.image]}
+          images={currentImages}
           currentIndex={lightbox.imgIndex}
           onClose={closeLightbox}
           onPrev={prevImg}
           onNext={nextImg}
-          title={currentAchievement.title}
+          title={ACHIEVEMENTS[lightbox.index].title}
         />
       )}
     </section>

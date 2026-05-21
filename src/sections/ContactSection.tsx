@@ -60,8 +60,8 @@ export default function ContactSection() {
       className="portfolio-section bg-[#141414] relative"
       style={{ zIndex: 10 }}
     >
-      <div className="flex flex-col h-full px-20 py-16">
-        <div className="max-w-6xl w-full mx-auto flex flex-col h-full">
+      <div className="flex items-center h-full px-20 py-16">
+        <div className="max-w-7xl w-full mx-auto flex flex-col h-full">
           <div className="contact-animate flex items-baseline gap-4 mb-12">
             <span className="section-number">10</span>
             <h2 className="text-4xl font-bold text-white tracking-tight">Contact</h2>
@@ -71,13 +71,12 @@ export default function ContactSection() {
           <div className="flex flex-col items-center justify-center flex-1 space-y-12">
             <div className="contact-animate text-center space-y-4 max-w-xl">
               <h3 className="text-3xl font-bold text-white">
-                Open to <span className="text-[#fe9004]">opportunities</span> in
-                <br />
-                AI/ML Engineering
+                Let's <span className="text-[#fe9004]">connect</span>
               </h3>
               <p className="text-white/50 text-sm leading-relaxed">
-                Always interested in challenging problems. Whether it's a full-time role,
-                research collaboration, or a freelance project — reach out.
+                Open to conversations on AI engineering roles, agentic systems and
+                LLM infrastructure, and research collaborations. Reach out — I'd be
+                glad to talk.
               </p>
             </div>
 

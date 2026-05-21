@@ -8,9 +8,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function CertificatesSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [lightbox, setLightbox] = useState<{ open: boolean; index: number }>({
+  const [lightbox, setLightbox] = useState<{ open: boolean; index: number; imgIndex: number }>({
     open: false,
     index: 0,
+    imgIndex: 0,
   });
 
   useEffect(() => {
@@ -31,6 +32,14 @@ export default function CertificatesSection() {
     return () => ctx.revert();
   }, []);
 
+  const currentImages = CERTIFICATES[lightbox.index]?.images || [];
+
+  const prevImg = () =>
+    setLightbox((l) => ({ ...l, imgIndex: (l.imgIndex - 1 + currentImages.length) % currentImages.length }));
+
+  const nextImg = () =>
+    setLightbox((l) => ({ ...l, imgIndex: (l.imgIndex + 1) % currentImages.length }));
+
   return (
     <section
       id="certificates"
@@ -38,8 +47,8 @@ export default function CertificatesSection() {
       className="portfolio-section bg-[#121212] relative overflow-hidden"
       style={{ zIndex: 9 }}
     >
-      <div className="flex flex-col h-full px-20 py-16">
-        <div className="max-w-6xl w-full mx-auto space-y-10">
+      <div className="flex items-center h-full px-20 py-16">
+        <div className="max-w-7xl w-full mx-auto space-y-10">
           <div className="cert-animate flex items-baseline gap-4">
             <span className="section-number">09</span>
             <h2 className="text-4xl font-bold text-white tracking-tight">Certificates</h2>
@@ -50,12 +59,12 @@ export default function CertificatesSection() {
             {CERTIFICATES.map((cert, i) => (
               <button
                 key={i}
-                className="cert-animate card-glow border border-white/5 bg-[#1a1a1a] rounded-sm overflow-hidden text-left group"
-                onClick={() => setLightbox({ open: true, index: i })}
+                className="cert-animate card-glow border border-white/5 bg-[#1a1a1a] rounded-sm overflow-hidden text-left group cursor-pointer"
+                onClick={() => setLightbox({ open: true, index: i, imgIndex: 0 })}
               >
                 <div className="relative overflow-hidden h-28">
                   <img
-                    src={cert.image}
+                    src={cert.images[0]}
                     alt={cert.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -63,6 +72,11 @@ export default function CertificatesSection() {
                     className="absolute inset-0"
                     style={{ background: "linear-gradient(to top, rgba(18,18,18,0.8), transparent 60%)" }}
                   />
+                  {cert.images.length > 1 && (
+                    <span className="absolute top-2 right-2 text-[9px] bg-black/60 border border-white/10 text-white/50 px-1.5 py-0.5 rounded">
+                      {cert.images.length}
+                    </span>
+                  )}
                 </div>
                 <div className="p-3">
                   <div className="text-xs text-white/60 font-medium leading-snug">{cert.title}</div>
@@ -75,11 +89,11 @@ export default function CertificatesSection() {
 
       {lightbox.open && (
         <Lightbox
-          images={[CERTIFICATES[lightbox.index].image]}
-          currentIndex={0}
+          images={currentImages}
+          currentIndex={lightbox.imgIndex}
           onClose={() => setLightbox((l) => ({ ...l, open: false }))}
-          onPrev={() => {}}
-          onNext={() => {}}
+          onPrev={prevImg}
+          onNext={nextImg}
           title={CERTIFICATES[lightbox.index].title}
         />
       )}

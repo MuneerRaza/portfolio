@@ -37,7 +37,7 @@ export default function AboutSection() {
       style={{ zIndex: 2 }}
     >
       <div className="flex items-center h-full px-20 py-16">
-        <div className="max-w-6xl w-full mx-auto">
+        <div className="max-w-7xl w-full mx-auto">
           <div ref={contentRef} className="space-y-12">
             {/* Header */}
             <div className="flex items-baseline gap-4">
@@ -90,7 +90,7 @@ export default function AboutSection() {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { value: "3.60", label: "CGPA / 4.0", sub: "FAST-NUCES" },
-                  { value: "3rd", label: "Batch Rank", sub: "Out of 60" },
+                  { value: "3rd", label: "Batch Rank", sub: "Cum Laude" },
                   { value: "7.0", label: "IELTS Score", sub: "Academic" },
                   { value: "1", label: "Publication", sub: "IACMC 2025" },
                 ].map((stat) => (

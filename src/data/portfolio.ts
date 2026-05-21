@@ -4,25 +4,35 @@ export const NAV_SECTIONS = [
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "publication", label: "Publication" },
+  { id: "education", label: "Education" },
   { id: "techstack", label: "Tech Stack" },
   { id: "achievements", label: "Achievements" },
-  { id: "education", label: "Education" },
   { id: "certificates", label: "Certificates" },
   { id: "contact", label: "Contact" },
 ];
 
 export const EXPERIENCE = [
   {
+    role: "AI Engineer",
+    company: "REDLUMB",
+    location: "Remote — Dubai, UAE",
+    period: "May 2026 — Present",
+    points: [
+      "Building AI agentic integration workflows into mobile apps — embedding autonomous agents for in-app automation and intelligent user experiences",
+      "Designing agent-tool orchestration and evaluation pipelines for production LLM features shipped to end users",
+    ],
+  },
+  {
     role: "Associate ML Engineer",
     company: "Softec Worldwide (Vidizmo)",
     location: "Karachi, Pakistan",
-    period: "May 2025 — Present",
+    period: "May 2025 — Apr 2026",
     points: [
-      "Multi-agent workflow designer using LangGraph",
-      "Deployed open-source LLMs with vLLM and Flash Attention",
-      "LLM translation pipeline evaluation with COMET/SacreBLEU",
-      "Built MCP clients and servers for tool use",
-      "MLflow experiment tracking with multi-GPU training and YOLO MLOps",
+      "Designed and built multi-agent workflow systems using LangGraph with dynamic routing and parallel pipelines",
+      "Deployed open-source LLMs (Qwen, Llama) locally using vLLM with Flash Attention for production inference",
+      "Evaluated LLM translation pipelines using COMET and SacreBLEU metrics across 10+ language pairs",
+      "Built MCP (Model Context Protocol) clients and servers enabling tool-use capabilities for AI agents",
+      "Set up MLflow experiment tracking for multi-GPU distributed training and YOLO-based MLOps pipelines",
     ],
   },
   {
@@ -31,8 +41,8 @@ export const EXPERIENCE = [
     location: "Islamabad, Pakistan",
     period: "Jul — Aug 2024",
     points: [
-      "Built semi-supervised drowsiness dataset and benchmarked CNN architectures",
-      "Developed custom YOLO+RNN pipeline for real-time video monitoring",
+      "Collected and annotated a semi-supervised drowsiness detection dataset; benchmarked multiple CNN architectures including ResNet, EfficientNet, and MobileNet",
+      "Developed a custom YOLO+RNN pipeline for real-time drowsiness monitoring from video streams with temporal awareness",
     ],
   },
   {
@@ -41,8 +51,8 @@ export const EXPERIENCE = [
     location: "Karachi, Pakistan",
     period: "Fall 2023, Spring 2025",
     points: [
-      "Teaching Assistant for Deep Learning for Perception",
-      "Lab Assistant for Programming Fundamentals",
+      "TA for Deep Learning for Perception — graded assignments, conducted office hours, assisted 60+ students with PyTorch implementations",
+      "Lab Assistant for Programming Fundamentals — guided freshmen through C language labs, debugging sessions, and exam preparation",
     ],
   },
 ];
@@ -51,7 +61,7 @@ export const FEATURED_PROJECTS = [
   {
     title: "Archiva AI",
     tag: "Document Reasoning Agent",
-    description: "AI agent reasoning across document corpora. Zero retrieval noise, no embeddings.",
+    description: "An AI agent that reasons across entire document corpora without embeddings or vector databases. Uses structured extraction and direct LLM reasoning for zero-noise retrieval.",
     tech: ["FastAPI", "Supabase", "Pydantic AI", "PostgreSQL"],
     link: "https://github.com/MuneerRaza/archiva-ai",
     image: "https://placehold.co/800x500/1a1a1a/fe9004?text=Archiva+AI",
@@ -59,7 +69,7 @@ export const FEATURED_PROJECTS = [
   {
     title: "IntelliFlow AI",
     tag: "Multi-Agent Orchestration",
-    description: "LangGraph orchestration with dynamic routing, parallel pipelines, Qdrant+BGE retrieval.",
+    description: "Multi-agent orchestration platform built with LangGraph. Features dynamic routing between specialized agents, parallel pipeline execution, and Qdrant+BGE hybrid retrieval.",
     tech: ["LangGraph", "FastAPI", "MongoDB", "Qdrant"],
     link: "https://github.com/MuneerRaza/intelliflow-ai",
     image: "https://placehold.co/800x500/1a1a1a/fe9004?text=IntelliFlow+AI",
@@ -67,15 +77,15 @@ export const FEATURED_PROJECTS = [
   {
     title: "CognifootAI",
     tag: "Medical AI (FYP)",
-    description: "Diabetic foot detection with LLM explainability, HITL feedback. 98% accuracy.",
+    description: "Final Year Project. Automated diabetic foot ulcer detection system with 98% accuracy. Features LLM-powered explainability for clinical reports and human-in-the-loop feedback for model refinement.",
     tech: ["PyTorch", "Explainable AI", "HITL"],
     link: "https://github.com/MuneerRaza/CognifootAI",
     image: "https://placehold.co/800x500/1a1a1a/fe9004?text=CognifootAI",
   },
   {
     title: "Accounting AI",
-    tag: "Invoice Manager",
-    description: "OCR + LLM NER extraction with interactive finance dashboards.",
+    tag: "Mobile App + AI",
+    description: "Cross-platform mobile app that extracts invoice data using OCR and LLM-based named entity recognition. Generates interactive finance dashboards from scanned receipts.",
     tech: ["Flutter", "SQLite", "OCR", "LLM"],
     link: "https://github.com/MuneerRaza/accounting_ai",
     image: "https://placehold.co/800x500/1a1a1a/fe9004?text=Accounting+AI",
@@ -83,18 +93,10 @@ export const FEATURED_PROJECTS = [
   {
     title: "Gray2Color AE",
     tag: "Image Colorization",
-    description: "Transformer Autoencoder achieving 25.03 dB PSNR, 0.94 SSIM.",
+    description: "Transformer-based autoencoder that colorizes grayscale images. Achieves 25.03 dB PSNR and 0.94 SSIM on standard benchmarks, outperforming traditional CNN approaches.",
     tech: ["PyTorch", "Transformers"],
     link: "https://github.com/MuneerRaza/Gray2Color_AE",
     image: "https://placehold.co/800x500/1a1a1a/fe9004?text=Gray2Color+AE",
-  },
-  {
-    title: "RADAR-Net",
-    tag: "Publication",
-    description: "Diffusion-transformer for raindrop removal. IACMC 2025. PSNR 25.44, SSIM 0.8532.",
-    tech: ["PyTorch", "Diffusion", "Attention"],
-    link: "https://www.researchgate.net/publication/394032739",
-    image: "https://placehold.co/800x500/1a1a1a/fe9004?text=RADAR-Net",
   },
 ];
 
@@ -102,7 +104,6 @@ export const OTHER_PROJECTS = [
   { title: "URL Detection", link: "https://github.com/MuneerRaza" },
   { title: "ESP32 Control", link: "https://github.com/MuneerRaza" },
   { title: "Stoxact", link: "https://github.com/MuneerRaza" },
-  { title: "Interview Curriculum", link: "https://github.com/MuneerRaza" },
   { title: "Skill Chat", link: "https://github.com/MuneerRaza" },
   { title: "Topic Modeling", link: "https://github.com/MuneerRaza" },
 ];
@@ -126,8 +127,18 @@ export const TECH_STACK = [
       { name: "LangChain", icon: "SiLangchain" },
       { name: "LangGraph", icon: "SiLangchain" },
       { name: "LlamaIndex", icon: "SiLlama" },
-      { name: "Ollama", icon: "SiOllama" },
       { name: "spaCy", icon: "SiSpacy" },
+    ],
+  },
+  {
+    category: "LLM Inference",
+    items: [
+      { name: "vLLM", icon: "SiVllm" },
+      { name: "llama.cpp", icon: "SiLlamacpp" },
+      { name: "Ollama", icon: "SiOllama" },
+      { name: "ExLlamaV2", icon: "SiExllama" },
+      { name: "Flash Attention", icon: "SiFlashattn" },
+      { name: "TensorRT-LLM", icon: "SiTensorrt" },
     ],
   },
   {
@@ -168,56 +179,64 @@ export const ACHIEVEMENTS = [
   {
     title: "AI FEST 4.0 ML/DS",
     result: "Winner",
-    image: "https://placehold.co/400x533/121212/fe9004?text=AI+FEST+Winner",
+    images: ["/images/aifest-winnner.jpeg"],
   },
   {
     title: "IBA ProBattle NLP",
     result: "Winner",
-    image: "https://placehold.co/400x533/121212/fe9004?text=IBA+ProBattle+Winner",
+    images: ["/images/iba-probattle.jpeg", "/images/probattle-nlp-iba-completion-winner.jpg"],
   },
   {
     title: "IBA Datathon",
     result: "Runner-Up",
-    image: "https://placehold.co/400x533/121212/fe9004?text=IBA+Datathon",
+    images: ["/images/iba-runner-up.jpeg", "/images/iba-winner.jpg"],
   },
   {
     title: "Developer's Day DS",
     result: "Runner-Up",
-    image: "https://placehold.co/400x533/121212/fe9004?text=DevDay+Runner+Up",
+    images: ["/images/devday-runner-up.jpeg"],
   },
   {
     title: "Softec AI Qualifier",
     result: "3rd Place",
-    image: "https://placehold.co/400x533/121212/fe9004?text=Softec+3rd",
+    images: ["/images/softec-competition-ranking-.jpeg", "/images/softec-participation.jpeg"],
   },
   {
-    title: "Batch Rank 3rd / 60",
+    title: "Batch Rank 3rd",
     result: "Cum Laude",
-    image: "https://placehold.co/400x533/121212/fe9004?text=Batch+Rank+3rd",
+    images: ["/images/graduation3rd-postion.jpeg", "/images/3rd-position-fast.jpeg"],
   },
   {
     title: "Rector's List",
     result: "Fall 2024",
-    image: "https://placehold.co/400x533/121212/fe9004?text=Rectors+List",
+    images: ["/images/rectorlist-award.jpg", "/images/fall24_rector_list.jpeg"],
   },
   {
     title: "1st Position Fall 2024",
     result: "BS AI",
-    image: "https://placehold.co/400x533/121212/fe9004?text=1st+Position",
+    images: ["/images/fall24-1st-posistion.jpeg"],
   },
 ];
 
 export const CERTIFICATES = [
-  { title: "Dean's List Fall 2021", image: "https://placehold.co/400x300/121212/ffffff?text=Deans+List+F21" },
-  { title: "Dean's List Spring 2022", image: "https://placehold.co/400x300/121212/ffffff?text=Deans+List+S22" },
-  { title: "Dean's List Spring 2024", image: "https://placehold.co/400x300/121212/ffffff?text=Deans+List+S24" },
-  { title: "Rector's List Certificate", image: "https://placehold.co/400x300/121212/ffffff?text=Rectors+List+Cert" },
-  { title: "IEEE DS Bootcamp", image: "https://placehold.co/400x300/121212/ffffff?text=IEEE+Bootcamp" },
-  { title: "Star Performer (TLC)", image: "https://placehold.co/400x300/121212/ffffff?text=Star+Performer" },
-  { title: "Coders Cup 2021", image: "https://placehold.co/400x300/121212/ffffff?text=Coders+Cup" },
-  { title: "ProCom App Dev Head", image: "https://placehold.co/400x300/121212/ffffff?text=ProCom+AppDev" },
-  { title: "Grand Debate 2022", image: "https://placehold.co/400x300/121212/ffffff?text=Grand+Debate" },
-  { title: "Softec AI Cert", image: "https://placehold.co/400x300/121212/ffffff?text=Softec+AI" },
-  { title: "Math Olympiad", image: "https://placehold.co/400x300/121212/ffffff?text=Math+Olympiad" },
-  { title: "Speed Programming", image: "https://placehold.co/400x300/121212/ffffff?text=Speed+Programming" },
+  { title: "Dean's List Fall 2021", images: ["/images/fall21-deans-list.jpeg"] },
+  { title: "Dean's List Spring 2022", images: ["/images/spring22-deans-list.jpeg"] },
+  { title: "Dean's List Spring 2024", images: ["/images/spring24-deans-list.jpeg"] },
+  { title: "Rector's List Certificate", images: ["/images/fall24_rector_list.jpeg"] },
+  { title: "IEEE Volunteer", images: ["/images/ieee-volunteer-cert.jpeg"] },
+  { title: "Star Performer (TLC)", images: ["/images/star-performer-volunteer-at-tlc-event.jpeg"] },
+  { title: "Coders Cup 2024", images: ["/images/coders-cup-24-participation.jpeg"] },
+  { title: "ProCom App Dev Head", images: ["/images/appdev-headprocom.jpeg", "/images/appdev.jpeg"] },
+  { title: "Grand Debate 2022", images: ["/images/the-grand-debate-participation.jpeg"] },
+  { title: "Softec AI Cert", images: ["/images/softec-participation.jpeg"] },
+  { title: "Math Olympiad", images: ["/images/math-olampyad-participation.jpeg"] },
+  { title: "Speed Programming", images: ["/images/devday-speed-programming-participation.jpeg"] },
 ];
+
+// Profile photo
+export const PROFILE_IMAGE = "/images/professional-profile-pciutre.jpeg";
+
+// Extra images not yet mapped
+// AKU symposium: aku-symposiym-2.jpeg, aku-symposum-1.jpeg
+// AITECH internship: aitech-internship.jpeg
+// FYP: fyp.jpeg

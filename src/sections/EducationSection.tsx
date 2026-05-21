@@ -44,10 +44,10 @@ export default function EducationSection() {
       id="education"
       ref={sectionRef}
       className="portfolio-section bg-[#141414] relative"
-      style={{ zIndex: 8 }}
+      style={{ zIndex: 8, marginBottom: "8vh" }}
     >
       <div className="flex items-center h-full px-20 py-16">
-        <div className="max-w-6xl w-full mx-auto space-y-12">
+        <div className="max-w-7xl w-full mx-auto space-y-12">
           <div className="edu-animate flex items-baseline gap-4">
             <span className="section-number">08</span>
             <h2 className="text-4xl font-bold text-white tracking-tight">Education</h2>
@@ -70,7 +70,7 @@ export default function EducationSection() {
                   <div className="grid grid-cols-3 gap-4">
                     {[
                       { value: "3.60", label: "CGPA" },
-                      { value: "3rd / 60", label: "Batch Rank" },
+                      { value: "3rd", label: "Batch Rank" },
                       { value: "Cum Laude", label: "Honor" },
                     ].map((s) => (
                       <div key={s.label}>

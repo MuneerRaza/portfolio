@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
@@ -46,7 +46,9 @@
   --accent-foreground: 0 0% 7%;
   --destructive: 0 72% 51%;
   --destructive-foreground: 0 0% 95%;
-  --app-font-sans: 'Inter', sans-serif;
+  --app-font-sans: 'Hanken Grotesk', sans-serif;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
   --radius: 0.5rem;
   --orange: #fe9004;
   --orange-glow: rgba(254, 144, 4, 0.15);
@@ -54,14 +56,33 @@
 
 * { box-sizing: border-box; }
 
+img {
+  image-orientation: from-image;
+}
+
 html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   background-color: #121212;
   color: #f2f2f2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+/* Display font on all headings + the hero name */
+h1, h2, h3, h4, h5, h6, #hero-name {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Monospace for technical labels — reinforces the engineer identity */
+.section-number,
+.tech-pill,
+.vertical-text,
+.nav-tooltip {
+  font-family: var(--font-mono);
 }
 
 /* Film grain overlay */
@@ -128,12 +149,20 @@ body {
   /* Z-axis: section starts slightly pushed back, GSAP will animate */
   transform-origin: center top;
   will-change: transform;
+  /* Breathing space — section stays stuck for extra 50vh before next covers it */
+  margin-bottom: 50vh;
 }
 
 /* First section (hero) has no shadow/border */
 .portfolio-section:first-child {
   box-shadow: none;
   border-top: none;
+}
+
+/* Last section — no breathing space or shadow needed */
+.portfolio-section:last-child {
+  margin-bottom: 0;
+  box-shadow: none;
 }
 
 /* ===== PINNED SECTIONS (Experience, Projects) ===== */

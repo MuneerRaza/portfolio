@@ -34,7 +34,7 @@ export default function PublicationSection() {
       style={{ zIndex: 5 }}
     >
       <div className="flex items-center h-full px-20 py-16">
-        <div className="max-w-6xl w-full mx-auto space-y-12">
+        <div className="max-w-7xl w-full mx-auto space-y-12">
           <div className="pub-animate flex items-baseline gap-4">
             <span className="section-number">05</span>
             <h2 className="text-4xl font-bold text-white tracking-tight">Publication</h2>

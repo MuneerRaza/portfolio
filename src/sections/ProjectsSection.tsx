@@ -53,7 +53,7 @@ export default function ProjectsSection() {
       className="portfolio-section bg-[#141414] relative"
     >
       <div className="flex h-full px-20 py-16">
-        <div className="max-w-6xl w-full mx-auto flex flex-col justify-center">
+        <div className="max-w-7xl w-full mx-auto flex flex-col justify-center">
 
           {/* Title + progress */}
           <div className="proj-el flex items-center gap-4 mb-2">
@@ -132,7 +132,7 @@ export default function ProjectsSection() {
             </div>
 
             {/* Right: project card — no remount, content swaps in place */}
-            <div className="col-span-9 border border-white/5 bg-[#1a1a1a] rounded-sm overflow-hidden">
+            <div key={activeProject} className="col-span-9 border border-white/5 bg-[#1a1a1a] rounded-sm overflow-hidden" style={{ animation: "contentSwap 0.5s cubic-bezier(0.22, 1, 0.36, 1)" }}>
               {/* Image area */}
               <div className="relative h-52 overflow-hidden">
                 <img

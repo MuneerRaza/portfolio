@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const SECTION_IDS = [
   "hero", "about", "experience", "projects", "publication",
-  "techstack", "achievements", "education", "certificates", "contact",
+  "education", "techstack", "achievements", "certificates", "contact",
 ];
 
 // Global lenis reference for sections to pause/resume
@@ -86,7 +86,7 @@ export default function App() {
         tl.to("#hero-portfolio-label", { opacity: 0, ease: "none", duration: 0.3 }, 0);
 
         // Move NAME directly to navbar position + scale down
-        tl.to("#hero-name", { y: nameY, scale: 0.3, transformOrigin: "left top", ease: "none" }, 0);
+        tl.to("#hero-name", { y: nameY, scale: 0.25, transformOrigin: "left top", ease: "none" }, 0);
 
         // Fade out subtitle (only name goes to navbar, not subtitle)
         tl.to("#hero-subtitle", { opacity: 0, ease: "none", duration: 0.4 }, 0);
@@ -134,7 +134,7 @@ export default function App() {
         style={{ height: "100vh" }}
       >
         <div id="hero-transform-wrapper" className="flex items-center w-full px-20 relative h-[100vh]">
-          <div className="flex flex-col lg:flex-row items-center gap-16 max-w-6xl w-full mx-auto pl-[25px]">
+          <div className="flex flex-col lg:flex-row items-center gap-16 max-w-7xl w-full mx-auto pl-[25px]">
             {/* Left column: name + extra content */}
             <div className="flex-1">
               <div id="hero-text-layout" className="flex flex-col justify-center">
@@ -154,24 +154,19 @@ export default function App() {
               {/* Extra content — fades out during morph */}
               <div id="hero-extra-content" className="mt-8" style={{ pointerEvents: "auto" }}>
                 <p id="hero-tagline" className="text-white/50 text-sm leading-relaxed max-w-md font-light">
-                  Training, deploying and monitoring AI systems.<br />
-                  Specialized in computer vision, NLP, and building<br />
-                  autonomous AI agents.
+                  Building multi-agent AI systems, deploying LLMs at scale,<br />
+                  and solving real-world problems with computer vision and NLP.
                 </p>
                 <div className="flex gap-4 pt-6">
-                  <button onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                    className="px-6 py-3 bg-[#fe9004] text-[#121212] font-semibold text-sm rounded-sm hover:shadow-[0_0_20px_rgba(254,144,4,0.4)] transition-all duration-300 tracking-wide uppercase">
-                    View Projects
-                  </button>
                   <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                    className="px-6 py-3 border border-[#fe9004]/30 text-white/80 font-medium text-sm rounded-sm hover:border-[#fe9004] hover:text-white transition-all duration-300 tracking-wide uppercase">
+                    className="px-6 py-3 bg-[#fe9004] text-[#121212] font-semibold text-sm rounded-sm hover:shadow-[0_0_20px_rgba(254,144,4,0.4)] transition-all duration-300 tracking-wide uppercase">
                     Contact Me
                   </button>
                 </div>
                 <div className="flex gap-8 pt-6">
                   {[
                     { label: "CGPA", value: "3.60" },
-                    { label: "Rank", value: "3rd / 60" },
+                    { label: "Rank", value: "3rd" },
                     { label: "IELTS", value: "7.0" },
                     { label: "Publications", value: "1" },
                   ].map((stat) => (
@@ -189,8 +184,8 @@ export default function App() {
               <div className="relative">
                 <div className="absolute inset-0 rounded-sm"
                   style={{ boxShadow: "0 0 60px rgba(254, 144, 4, 0.15), inset 0 0 30px rgba(254, 144, 4, 0.05)", border: "1px solid rgba(254, 144, 4, 0.2)" }} />
-                <img src="https://placehold.co/400x500/121212/fe9004?text=Profile+Photo" alt="Muneer Raza"
-                  className="w-[240px] h-[300px] object-cover" style={{ filter: "grayscale(100%) contrast(1.1)" }} />
+                <img src="/images/professional-profile-pciutre.jpeg" alt="Muneer Raza"
+                  className="w-[240px] h-[300px] object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 h-1/3"
                   style={{ background: "linear-gradient(to top, rgba(18,18,18,0.8), transparent)" }} />
               </div>
@@ -217,9 +212,9 @@ export default function App() {
       <ExperienceSection />
       <ProjectsSection />
       <PublicationSection />
+      <EducationSection />
       <TechStackSection />
       <AchievementsSection />
-      <EducationSection />
       <CertificatesSection />
       <ContactSection />
     </>

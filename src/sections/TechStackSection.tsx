@@ -43,6 +43,11 @@ export const iconMap: Record<string, React.ReactNode> = {
   SiPydantic: <span className="text-[#fe9004] font-bold text-xs">Py</span>,
   SiUltralytics: <span className="text-[#fe9004] font-bold text-xs">UL</span>,
   SiDiffusers: <span className="text-[#fe9004] font-bold text-xs">Di</span>,
+  SiVllm: <span className="text-[#fe9004] font-bold text-xs">vL</span>,
+  SiLlamacpp: <span className="text-[#fe9004] font-bold text-xs">cpp</span>,
+  SiExllama: <span className="text-[#fe9004] font-bold text-xs">Ex</span>,
+  SiFlashattn: <span className="text-[#fe9004] font-bold text-xs">FA</span>,
+  SiTensorrt: <span className="text-[#fe9004] font-bold text-xs">RT</span>,
 };
 
 export default function TechStackSection() {
@@ -73,8 +78,8 @@ export default function TechStackSection() {
       className="portfolio-section bg-[#141414] relative overflow-hidden"
       style={{ zIndex: 6 }}
     >
-      <div className="flex flex-col h-full px-20 py-16">
-        <div className="max-w-6xl w-full mx-auto space-y-10">
+      <div className="flex items-center h-full px-20 py-16">
+        <div className="max-w-7xl w-full mx-auto space-y-10">
           <div className="tech-animate flex items-baseline gap-4">
             <span className="section-number">06</span>
             <h2 className="text-4xl font-bold text-white tracking-tight">Tech Stack</h2>
