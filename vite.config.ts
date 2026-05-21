@@ -3,8 +3,9 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
-export default defineConfig({
-  base: "/",
+export default defineConfig(({ command }) => ({
+  // GitHub Pages serves the project at /portfolio/; dev stays at root.
+  base: command === "build" ? "/portfolio/" : "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -21,4 +22,4 @@ export default defineConfig({
     port: 5173,
     host: "0.0.0.0",
   },
-});
+}));

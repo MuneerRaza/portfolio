@@ -1,380 +1,125 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
+/* ============================================================
+   MUNEER RAZA — PORTFOLIO
+   Editorial / bold-typographic system. Warm paper, ink black,
+   one vivid orange accent. Display: Bricolage Grotesque.
+   ============================================================ */
 
-@theme inline {
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-  --font-sans: var(--app-font-sans);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-}
+@theme {
+  --color-paper: #f2f0ea;
+  --color-paper-2: #e9e6dd;
+  --color-card: #fbfaf6;
+  --color-ink: #15120c;
+  --color-ink-soft: #5b554a;
+  --color-ink-faint: #938d7f;
+  --color-accent: #ff3d00;
+  --color-line: #15120c;
 
-:root {
-  --background: 0 0% 7.1%;
-  --foreground: 0 0% 95%;
-  --border: 0 0% 15%;
-  --input: 0 0% 15%;
-  --ring: 33 99% 50%;
-  --card: 0 0% 9%;
-  --card-foreground: 0 0% 95%;
-  --primary: 33 99% 50%;
-  --primary-foreground: 0 0% 7%;
-  --secondary: 0 0% 14%;
-  --secondary-foreground: 0 0% 95%;
-  --muted: 0 0% 14%;
-  --muted-foreground: 0 0% 55%;
-  --accent: 33 99% 50%;
-  --accent-foreground: 0 0% 7%;
-  --destructive: 0 72% 51%;
-  --destructive-foreground: 0 0% 95%;
-  --app-font-sans: 'Hanken Grotesk', sans-serif;
   --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-sans: 'Hanken Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --radius: 0.5rem;
-  --orange: #fe9004;
-  --orange-glow: rgba(254, 144, 4, 0.15);
 }
 
 * { box-sizing: border-box; }
 
-img {
-  image-orientation: from-image;
-}
-
-html {
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #f2f0ea;
+  color: #15120c;
 }
 
 body {
   font-family: 'Hanken Grotesk', sans-serif;
-  background-color: #121212;
-  color: #f2f2f2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Display font on all headings + the hero name */
-h1, h2, h3, h4, h5, h6, #hero-name {
+img { image-orientation: from-image; display: block; }
+
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  margin: 0;
 }
 
-/* Monospace for technical labels — reinforces the engineer identity */
-.section-number,
-.tech-pill,
-.vertical-text,
-.nav-tooltip {
+/* Display headline — clamps fluidly */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+/* Mono eyebrow / labels */
+.mono {
   font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-/* Film grain overlay */
+::selection { background: #ff3d00; color: #f2f0ea; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: #e9e6dd; }
+::-webkit-scrollbar-thumb { background: #15120c; }
+
+/* Film grain overlay — subtle paper texture */
 .grain {
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 128px 128px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
 }
 
-/* Orange glow bar at top */
-.top-glow-bar {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #fe9004, transparent);
-  z-index: 1000;
-}
-.top-glow-bar::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: radial-gradient(ellipse at center top, rgba(254, 144, 4, 0.12) 0%, transparent 70%);
-}
+/* Reveal — GSAP toggles these; CSS fallback keeps content visible */
+.reveal { will-change: transform, opacity; }
 
-/* Grid lines background */
-.grid-lines {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(254, 144, 4, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(254, 144, 4, 0.04) 1px, transparent 1px);
-  background-size: 25% 80px;
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
-
-/* ===== STACKING SECTIONS WITH Z-AXIS DEPTH ===== */
-.portfolio-section {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  /* 3D depth shadow — feels like a card lifting over the previous */
-  box-shadow:
-    0 -30px 80px rgba(0, 0, 0, 0.7),
-    0 -8px 30px rgba(0, 0, 0, 0.5),
-    0 -2px 6px rgba(0, 0, 0, 0.3);
-  /* Subtle top edge highlight */
-  border-top: 1px solid rgba(254, 144, 4, 0.08);
-  /* Z-axis: section starts slightly pushed back, GSAP will animate */
-  transform-origin: center top;
-  will-change: transform;
-  /* Breathing space — section stays stuck for extra 50vh before next covers it */
-  margin-bottom: 50vh;
-}
-
-/* First section (hero) has no shadow/border */
-.portfolio-section:first-child {
-  box-shadow: none;
-  border-top: none;
-}
-
-/* Last section — no breathing space or shadow needed */
-.portfolio-section:last-child {
-  margin-bottom: 0;
-  box-shadow: none;
-}
-
-/* ===== PINNED SECTIONS (Experience, Projects) ===== */
-.pinned-section {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  /* Same depth shadow as stacking sections */
-  box-shadow:
-    0 -30px 80px rgba(0, 0, 0, 0.7),
-    0 -8px 30px rgba(0, 0, 0, 0.5);
-  border-top: 1px solid rgba(254, 144, 4, 0.08);
-}
-
-/* ===== MINI NAVBAR ===== */
-.hero-minibar {
-  position: fixed;
-  top: 0;
-  left: 64px;
-  right: 64px;
-  height: 56px;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  background: rgba(18, 18, 18, 0.92);
-  backdrop-filter: blur(16px) saturate(1.5);
-  border-bottom: 1px solid rgba(254, 144, 4, 0.1);
-  opacity: 0;
-  transform: translateY(-100%);
-  pointer-events: none;
-  transition: none;
-}
-.hero-minibar.visible {
-  pointer-events: auto;
-}
-
-/* Orange glow on hover for cards */
-.card-glow {
-  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-}
-.card-glow:hover {
-  box-shadow: 0 0 30px rgba(254, 144, 4, 0.15), 0 4px 20px rgba(0, 0, 0, 0.4);
-  border-color: rgba(254, 144, 4, 0.3);
-  transform: translateY(-2px);
-}
-
-/* Tech pill */
-.tech-pill {
+.marquee-track {
   display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
-  background: rgba(254, 144, 4, 0.08);
-  border: 1px solid rgba(254, 144, 4, 0.2);
-  border-radius: 100px;
-  font-size: 11px;
-  color: #fe9004;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  line-height: 1;
-}
-.tech-pill svg,
-.tech-pill > span:first-child {
-  display: inline-flex;
-  align-items: center;
-  font-size: 13px;
-  width: 13px;
-  height: 13px;
-  flex-shrink: 0;
-  vertical-align: middle;
-}
-
-/* Section number */
-.section-number {
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  color: rgba(254, 144, 4, 0.4);
-  font-weight: 600;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #121212; }
-::-webkit-scrollbar-thumb { background: #fe9004; border-radius: 2px; }
-
-/* Lightbox */
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.95);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Nav sidebar */
-.nav-sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  width: 64px;
-  z-index: 500;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  border-right: 1px solid rgba(255, 255, 255, 0.04);
-  background: rgba(18, 18, 18, 0.8);
-  backdrop-filter: blur(10px);
-}
-.nav-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-  transition: all 0.3s;
-  position: relative;
-}
-.nav-dot.active, .nav-dot:hover {
-  background: #fe9004;
-  box-shadow: 0 0 8px rgba(254, 144, 4, 0.6);
-}
-.nav-dot .nav-tooltip {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(18, 18, 18, 0.95);
-  border: 1px solid rgba(254, 144, 4, 0.2);
-  color: #f2f2f2;
-  font-size: 11px;
-  font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 4px;
   white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s;
-}
-.nav-dot:hover .nav-tooltip { opacity: 1; }
-
-/* Right sidebar */
-.right-sidebar {
-  position: fixed;
-  right: 0;
-  top: 0;
-  height: 100vh;
-  width: 64px;
-  z-index: 500;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  border-left: 1px solid rgba(255, 255, 255, 0.04);
-  background: rgba(18, 18, 18, 0.8);
-  backdrop-filter: blur(10px);
-}
-.vertical-text {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.25);
-  text-transform: uppercase;
+  animation: marquee 32s linear infinite;
 }
 
-/* Word reveal animation */
-.word-reveal span {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(20px);
+/* Link underline sweep */
+.link-sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.link-sweep:hover { background-size: 100% 1.5px; }
 
-/* ===== SUB-SCROLL ANIMATIONS ===== */
-@keyframes contentSwap {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateX(-8px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideOutLeft {
-  from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(-20px); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes flipIn {
-  from { opacity: 0; transform: perspective(800px) rotateY(-15deg) scale(0.95); }
-  to { opacity: 1; transform: perspective(800px) rotateY(0deg) scale(1); }
-}
-@keyframes odometerSlide {
-  from { transform: translateY(-100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
+/* Hairline */
+.hr { height: 1px; background: rgba(21,18,12,0.16); }
 
-@layer utilities {
-  .text-balance { text-wrap: balance; }
+/* Section panels */
+.panel-light,
+.panel-dark {
+  position: relative;
+  z-index: 10;
+}
+.panel-light { background: #f2f0ea; }
+.panel-dark { background: #15120c; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  * { scroll-behavior: auto !important; }
 }

@@ -1,97 +1,62 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ExternalLink } from "lucide-react";
+import { useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { useReveal } from "../lib/reveal";
+import SectionHead from "../components/SectionHead";
 
-gsap.registerPlugin(ScrollTrigger);
+const METRICS = [
+  { k: "PSNR", v: "25.44", u: " dB", d: "Peak Signal-to-Noise Ratio" },
+  { k: "SSIM", v: "0.8532", u: "", d: "Structural Similarity Index" },
+  { k: "RMSE", v: "0.0549", u: "", d: "Root Mean Square Error" },
+];
 
 export default function PublicationSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const ctx = gsap.context(() => {
-      gsap.from(".pub-animate", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  const ref = useRef<HTMLElement>(null);
+  useReveal(ref);
 
   return (
-    <section
-      id="publication"
-      ref={sectionRef}
-      className="portfolio-section bg-[#121212] relative"
-      style={{ zIndex: 5 }}
-    >
-      <div className="flex items-center h-full px-20 py-16">
-        <div className="max-w-7xl w-full mx-auto space-y-12">
-          <div className="pub-animate flex items-baseline gap-4">
-            <span className="section-number">05</span>
-            <h2 className="text-4xl font-bold text-white tracking-tight">Publication</h2>
-            <div className="flex-1 h-px bg-white/5 ml-4" />
+    <section id="publication" ref={ref} className="panel-dark text-paper">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-28 md:py-36">
+        <SectionHead index="04" label="Research" title="Published work." dark />
+
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="lg:col-span-7" data-reveal>
+            <div className="mono text-[11px] text-accent mb-5">Conference Paper · IACMC 2025</div>
+            <h3 className="font-display font-bold text-3xl md:text-[3rem] leading-[1.03] tracking-tight">
+              RADAR-Net: RAindrop Diffusion-Attention Restoration Network
+            </h3>
+            <p className="mt-6 text-[15px] leading-relaxed text-paper/60 max-w-xl">
+              A Transformer-based diffusion model with a multiscale attention mechanism
+              and gated deconvolutional feed-forward design for robust raindrop removal
+              from images. It outperforms existing methods on both synthetic and
+              real-world benchmarks.
+            </p>
+            <a
+              href="https://www.researchgate.net/publication/394032739"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 mt-8 px-6 py-3.5 bg-accent text-paper rounded-full mono text-[11px] hover:bg-paper hover:text-ink transition-colors"
+            >
+              Read the paper
+              <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
           </div>
 
-          <div className="pub-animate relative">
-            <div
-              className="card-glow p-10 border border-white/5 bg-[#1a1a1a] rounded-sm relative overflow-hidden"
-            >
-              {/* Orange accent line */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#fe9004] to-transparent opacity-40" />
-
-              <div className="grid grid-cols-2 gap-12">
-                <div className="space-y-6">
-                  <div>
-                    <span className="text-xs text-[#fe9004] font-medium tracking-wider uppercase">
-                      Conference Paper — IACMC 2025
-                    </span>
-                    <h3 className="text-2xl font-bold text-white mt-3 leading-tight">
-                      RADAR-Net: RAindrop Diffusion-Attention Restoration Network
-                    </h3>
-                  </div>
-                  <p className="text-white/60 text-sm leading-relaxed">
-                    Transformer-based diffusion model with multiscale attention mechanism for
-                    high-quality raindrop removal from images. Achieves state-of-the-art
-                    results on standard benchmarks.
-                  </p>
-                  <a
-                    href="https://www.researchgate.net/publication/394032739"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#fe9004] text-[#121212] text-sm font-semibold rounded-sm hover:shadow-[0_0_20px_rgba(254,144,4,0.4)] transition-all"
-                  >
-                    Read Paper
-                    <ExternalLink size={14} />
-                  </a>
+          <div data-reveal="right" className="lg:col-span-5 border border-paper/15">
+            {METRICS.map((m) => (
+              <div
+                key={m.k}
+                className="flex items-baseline gap-4 md:gap-6 px-6 py-6 border-b border-paper/15 last:border-b-0"
+              >
+                <div className="mono text-[11px] text-accent w-14 shrink-0">{m.k}</div>
+                <div className="font-display font-extrabold text-3xl md:text-[2.6rem] leading-none">
+                  {m.v}
+                  <span className="text-base text-paper/40">{m.u}</span>
                 </div>
-
-                <div className="space-y-4">
-                  <div className="text-xs text-white/30 uppercase tracking-wider font-medium mb-6">
-                    Performance Metrics
-                  </div>
-                  {[
-                    { label: "PSNR", value: "25.44 dB", desc: "Peak Signal-to-Noise Ratio" },
-                    { label: "SSIM", value: "0.8532", desc: "Structural Similarity Index" },
-                    { label: "RMSE", value: "0.0549", desc: "Root Mean Square Error" },
-                  ].map((metric) => (
-                    <div key={metric.label} className="flex items-center gap-6 p-4 border border-white/5 rounded-sm bg-[#222]">
-                      <div className="w-16 text-xs text-[#fe9004] font-mono font-bold">{metric.label}</div>
-                      <div className="text-2xl font-black text-white">{metric.value}</div>
-                      <div className="text-xs text-white/30 ml-auto">{metric.desc}</div>
-                    </div>
-                  ))}
+                <div className="mono text-[9px] text-paper/40 ml-auto text-right hidden sm:block">
+                  {m.d}
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,122 +1,82 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from "react";
+import { useReveal } from "../lib/reveal";
+import SectionHead from "../components/SectionHead";
 
 const COURSES = [
-  "Generative AI", "Computer Vision", "NLP", "Deep Learning",
-  "Machine Learning", "Neural Networks", "Recommender Systems",
-  "DSA", "Probability & Stats", "Linear Algebra",
+  "Generative AI", "Computer Vision", "Natural Language Processing", "Deep Learning",
+  "Machine Learning", "Artificial Neural Networks", "Recommender Systems",
+  "Data Structures & Algorithms", "Probability & Statistics", "Linear Algebra",
 ];
 
-const INVOLVEMENTS = [
-  "Teaching Assistant — Deep Learning for Perception",
-  "Lab Assistant — Programming Fundamentals",
-  "ProCom App Dev Head",
+const INVOLVEMENT = [
+  "Teaching Assistant, Deep Learning for Perception",
+  "Lab Assistant, Programming Fundamentals",
+  "App Development Head, ProCom",
   "IEEE Volunteer",
-  "Star Performer at TLC",
+  "Star Performer, TLC Event",
 ];
 
 export default function EducationSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const ctx = gsap.context(() => {
-      gsap.from(".edu-animate", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  const ref = useRef<HTMLElement>(null);
+  useReveal(ref);
 
   return (
-    <section
-      id="education"
-      ref={sectionRef}
-      className="portfolio-section bg-[#141414] relative"
-      style={{ zIndex: 8, marginBottom: "8vh" }}
-    >
-      <div className="flex items-center h-full px-20 py-16">
-        <div className="max-w-7xl w-full mx-auto space-y-12">
-          <div className="edu-animate flex items-baseline gap-4">
-            <span className="section-number">08</span>
-            <h2 className="text-4xl font-bold text-white tracking-tight">Education</h2>
-            <div className="flex-1 h-px bg-white/5 ml-4" />
-          </div>
+    <section id="education" ref={ref} className="panel-light">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-28 md:py-36">
+        <SectionHead index="05" label="Education" title="Foundations." />
 
-          <div className="grid grid-cols-2 gap-10">
-            <div className="edu-animate space-y-6">
-              <div className="card-glow p-8 border border-white/5 bg-[#1a1a1a] rounded-sm relative overflow-hidden">
-                <div className="absolute top-0 left-0 bottom-0 w-1 bg-[#fe9004]" />
-                <div className="pl-6 space-y-4">
-                  <div>
-                    <div className="text-xs text-[#fe9004] tracking-widest uppercase font-medium mb-2">
-                      2021 — 2025
-                    </div>
-                    <h3 className="text-xl font-bold text-white">BS Artificial Intelligence</h3>
-                    <p className="text-white/60 text-sm mt-1">FAST-NUCES, Karachi, Pakistan</p>
-                  </div>
-                  <div className="w-8 h-px bg-[#fe9004]/30" />
-                  <div className="grid grid-cols-3 gap-4">
-                    {[
-                      { value: "3.60", label: "CGPA" },
-                      { value: "3rd", label: "Batch Rank" },
-                      { value: "Cum Laude", label: "Honor" },
-                    ].map((s) => (
-                      <div key={s.label}>
-                        <div className="text-lg font-black text-[#fe9004]">{s.value}</div>
-                        <div className="text-xs text-white/30 mt-0.5">{s.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* degree */}
+          <div className="lg:col-span-7">
+            <div data-reveal className="border-t-2 border-ink pt-7">
+              <div className="mono text-[11px] text-accent mb-3">2021–2025</div>
+              <h3 className="font-display font-bold text-3xl md:text-[3rem] leading-[0.98] tracking-tight">
+                BS Artificial Intelligence
+              </h3>
+              <div className="mono text-[12px] text-ink-soft mt-3">
+                FAST National University (FAST-NUCES), Karachi
               </div>
 
-              <div className="edu-animate space-y-3">
-                <div className="text-xs text-white/30 uppercase tracking-wider">Involvement</div>
-                {INVOLVEMENTS.map((item) => (
-                  <div key={item} className="flex gap-3 items-start">
-                    <span className="text-[#fe9004] mt-1.5 shrink-0">
-                      <svg width="5" height="5" viewBox="0 0 5 5" fill="currentColor">
-                        <circle cx="2.5" cy="2.5" r="2.5" />
-                      </svg>
-                    </span>
-                    <span className="text-white/60 text-sm">{item}</span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-px mt-8 bg-ink/15 border border-ink/15">
+                {[
+                  { v: "3.60", l: "CGPA / 4.0" },
+                  { v: "3rd", l: "of 60, Cum Laude" },
+                  { v: "7.0", l: "IELTS Academic" },
+                  { v: "4 yrs", l: "Full-time" },
+                ].map((s) => (
+                  <div key={s.l} className="bg-paper p-5">
+                    <div className="font-display font-extrabold text-2xl md:text-3xl">{s.v}</div>
+                    <div className="mono text-[9px] text-ink-soft mt-1.5 leading-snug">{s.l}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="edu-animate space-y-4">
-              <div className="text-xs text-white/30 uppercase tracking-wider">Key Coursework</div>
-              <div className="flex flex-wrap gap-2">
-                {COURSES.map((course) => (
-                  <span
-                    key={course}
-                    className="px-3 py-2 border border-white/5 bg-[#1a1a1a] text-white/60 text-sm rounded-sm hover:border-[#fe9004]/20 hover:text-white transition-all"
-                  >
-                    {course}
-                  </span>
+            <div data-reveal className="mt-12">
+              <div className="mono text-[11px] text-ink-soft mb-5">Involvement & Leadership</div>
+              <ul className="space-y-3">
+                {INVOLVEMENT.map((it) => (
+                  <li key={it} className="flex gap-3 text-[15px] text-ink-soft items-start">
+                    <span className="mt-[9px] shrink-0 w-1.5 h-1.5 rounded-full bg-accent" />
+                    {it}
+                  </li>
                 ))}
-              </div>
+              </ul>
+            </div>
+          </div>
 
-              <div className="mt-6 p-6 border border-[#fe9004]/10 bg-[#fe9004]/5 rounded-sm">
-                <div className="text-xs text-[#fe9004] font-medium tracking-wider uppercase mb-3">
-                  IELTS Academic
-                </div>
-                <div className="text-4xl font-black text-white">7.0</div>
-                <div className="text-white/40 text-sm mt-1">Band Score</div>
-              </div>
+          {/* coursework */}
+          <div data-reveal="right" className="lg:col-span-5">
+            <div className="mono text-[11px] text-ink-soft mb-5">Key Coursework</div>
+            <div className="flex flex-wrap gap-2.5">
+              {COURSES.map((c) => (
+                <span
+                  key={c}
+                  className="font-display font-semibold text-sm px-4 py-2.5 border border-ink/20 rounded-full hover:border-accent hover:text-accent transition-colors"
+                >
+                  {c}
+                </span>
+              ))}
             </div>
           </div>
         </div>
